@@ -5,5 +5,5 @@ import java.util.List;
 
 public class LudoRunner {
     List<Player> players = Arrays.asList(new Player(Color.RED),new Player(Color.GREEN));
-
+    Game game = new Game(players);
 }
