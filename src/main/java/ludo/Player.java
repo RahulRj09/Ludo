@@ -13,4 +13,8 @@ public class Player {
             this.coins.add(coin);
         }
     }
+
+    public void play() {
+
+    }
 }
