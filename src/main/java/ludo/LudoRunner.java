@@ -8,7 +8,7 @@ public class LudoRunner {
         List<Player> players = Arrays.asList(new Player(Color.RED),new Player(Color.GREEN));
         Game game = new Game(players);
         while (game.isRunning()){
-
+            game.play();
         }
     }
 
