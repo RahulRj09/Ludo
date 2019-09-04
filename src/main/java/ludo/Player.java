@@ -6,6 +6,7 @@ import java.util.List;
 public class Player {
     List<Coin> coins = new ArrayList<>();
     Color color;
+    Dice dice;
     public Player(Color color) {
         this.color = color;
         for (int i = 0; i <=3 ; i++) {
@@ -15,6 +16,6 @@ public class Player {
     }
 
     public void play() {
-
+        int numberOnDice = dice.toss();
     }
 }
