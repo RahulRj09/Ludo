@@ -10,7 +10,7 @@ public class Player {
         this.color = color;
         for (int i = 0; i <=3 ; i++) {
             Coin coin = new Coin(i);
-            this.coins.add(coin.getId());
+            this.coins.add(coin);
         }
     }
 }
