@@ -1,4 +1,6 @@
-package ludo;
+package model;
+
+import ludo.Coin;
 
 import java.util.Arrays;
 
