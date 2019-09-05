@@ -1,11 +1,11 @@
 package ludo;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Player {
-    private List<Coin> coins = new ArrayList<>();
+    private List<Coin> coins;
     Color color;
     private Dice dice;
     private Winner winner;
@@ -13,10 +13,7 @@ public class Player {
 
     public Player(Color color) {
         this.color = color;
-        for (int i = 0; i <= 3; i++) { // todo find alternative way of this
-            Coin coin = new Coin();
-            this.coins.add(coin);
-        }
+        this.coins = Arrays.asList(new Coin(),new Coin(),new Coin(),new Coin());
         this.dice = new Dice();
         this.winner = new Winner();
     }

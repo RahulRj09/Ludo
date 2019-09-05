@@ -13,6 +13,6 @@ public class Coin {
 
     public int moveBy(int numberOnDice) {
         this.position += numberOnDice;
-        return  this.position;
+        return this.position;
     }
 }
