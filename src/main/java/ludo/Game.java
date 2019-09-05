@@ -14,6 +14,7 @@ public class Game {
     public boolean isRunning() {
         for (Player player : players) {
             if (player.hasWon()) {
+                System.out.println(player.color+" Win");
                 return false;
             }
         }

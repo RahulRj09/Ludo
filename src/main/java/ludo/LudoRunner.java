@@ -9,9 +9,9 @@ public class LudoRunner {
         Game game = new Game(players);
         while (game.isRunning()) {
             game.play();
-        }
-        if(!game.isRunning()){
-            System.out.println("win");
+            if (!game.isRunning()) {
+                return;
+            }
         }
 
     }

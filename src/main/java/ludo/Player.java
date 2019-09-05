@@ -27,7 +27,7 @@ public class Player {
         int coinToMove = scanner.nextInt();
         int position = coins.get(coinToMove).moveBy(numberOnDice);
         System.out.println(position);
-        if (position > color.getEndingPosition()) {
+        if (position >= color.getEndingPosition()) {
             winner.add(color);
         }
     }
@@ -39,13 +39,8 @@ public class Player {
 
     public void play() {
         int numberOnDice = dice.toss();
-        int numberOfCoinsAtHome = 0;
-        for (Coin coin : coins) {
-            if (coin.isAtHome()) {
-                numberOfCoinsAtHome++;
-            }
-        }
-        System.out.println("Color " + color + " NumberOnDice " + numberOnDice + " numberOfCoinsAtHome " + numberOfCoinsAtHome);
+        int numberOfCoinsAtHome = getNumberOfCoinsAtHome();
+        print(numberOnDice, numberOfCoinsAtHome);
         if (numberOnDice == 6 && numberOfCoinsAtHome == 4) {
             moveACoinOut();
         }
@@ -68,6 +63,20 @@ public class Player {
         } else if (numberOfCoinsAtHome != 4) {
             moveACoin(numberOnDice);
         }
+    }
+
+    private int getNumberOfCoinsAtHome() {
+        int numberOfCoinsAtHome = 0;
+        for (Coin coin : coins) {
+            if (coin.isAtHome()) {
+                numberOfCoinsAtHome++;
+            }
+        }
+        return numberOfCoinsAtHome;
+    }
+
+    private void print(int numberOnDice, int numberOfCoinsAtHome) {
+        System.out.println("Color " + color + " NumberOnDice " + numberOnDice + " numberOfCoinsAtHome " + numberOfCoinsAtHome);
     }
 
     public boolean hasWon() {
