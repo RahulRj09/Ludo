@@ -15,8 +15,4 @@ public class Coin {
         this.position += numberOnDice;
         System.out.println(this.position);
     }
-
-    public int getPosition() {
-        return position;
-    }
 }

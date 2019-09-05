@@ -33,14 +33,13 @@ public class Player {
 
     public void play() {
         int numberOnDice = dice.toss();
-        System.out.println("Color "+color+" NumberOnDice "+numberOnDice +" Position "+ new Coin().getPosition());
         int numberOfCoinsAtHome = 0;
         for (Coin coin : coins) {
             if (coin.isAtHome()) {
                 numberOfCoinsAtHome++;
             }
         }
-        System.out.println("numberOfCoinsAtHome "+numberOfCoinsAtHome);
+        System.out.println("Color "+color+" NumberOnDice "+numberOnDice+" numberOfCoinsAtHome "+numberOfCoinsAtHome);
         if (numberOnDice == 6 && numberOfCoinsAtHome == 4) {
             moveACoinOut();
         }
@@ -49,7 +48,7 @@ public class Player {
             moveACoin(numberOnDice);
         }
 
-        if (numberOnDice == 6 && (numberOfCoinsAtHome >= 1 && numberOfCoinsAtHome  <=3)) {
+        if (numberOnDice == 6 && numberOfCoinsAtHome !=4) {
             System.out.println("What do you want to do?");
             System.out.println("1. Move existing coin");
             System.out.println("2. Take out a coin");
@@ -60,12 +59,8 @@ public class Player {
             } else {
                 moveACoinOut();
             }
-        }
-
-        if (numberOfCoinsAtHome == 4 && numberOnDice == 6) {
-            System.out.println("Which coin do you want to move?");
-            Scanner scanner = new Scanner(System.in);
-            scanner.nextInt();
+        }else if(numberOfCoinsAtHome !=4){
+            moveACoin(numberOnDice);
         }
     }
 
