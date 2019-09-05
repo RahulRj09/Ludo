@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Player {
-    List<Coin> coins = new ArrayList<>();
+    private List<Coin> coins = new ArrayList<>();
     Color color;
-    Dice dice;
-    Winner winner;
+    private Dice dice;
+    private Winner winner;
     private int numberOfCoinsOut = -1;
 
     public Player(Color color) {

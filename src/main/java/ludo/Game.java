@@ -3,8 +3,8 @@ package ludo;
 import java.util.List;
 
 public class Game {
-    List<Player> players;
-    int currentPlayerIndex;
+    private List<Player> players;
+    private int currentPlayerIndex;
 
     public Game(List<Player> players) {
         this.players = players;
