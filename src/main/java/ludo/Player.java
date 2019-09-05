@@ -1,20 +1,21 @@
 package ludo;
 
-import java.util.Arrays;
+import model.Home;
+
 import java.util.List;
 import java.util.Scanner;
 
 public class Player {
-    private List<Coin> coins;
-    Color color;
+    Home home;
+    List<Coin> coins;
     private Dice dice;
     private Winner winner;
     private int numberOfCoinsOut = -1;
     private Scanner scanner = new Scanner(System.in);
 
-    public Player(Color color) {
-        this.color = color;
-        this.coins = Arrays.asList(new Coin(), new Coin(), new Coin(), new Coin());
+    public Player(Home home) {
+        this.home = home;
+        this.coins = home.getCoins();
         this.dice = new Dice();
         this.winner = new Winner();
     }
@@ -24,14 +25,14 @@ public class Player {
         int coinToMove = scanner.nextInt();
         int position = coins.get(coinToMove).moveBy(numberOnDice);
         System.out.println(position);
-        if (position >= color.getEndingPosition()) {
-            winner.add(color);
+        if (position >= home.getEndingPosition()) {
+            winner.add(home);
         }
     }
 
     public void moveACoinOut() {
         numberOfCoinsOut++;
-        coins.get(numberOfCoinsOut).place(color.getStartingPosition());
+        coins.get(numberOfCoinsOut).place(home.getStartingPosition());
     }
 
     public void play() {
@@ -73,7 +74,7 @@ public class Player {
     }
 
     private void print(int numberOnDice, int numberOfCoinsAtHome) {
-        System.out.println("Color " + color + " NumberOnDice " + numberOnDice + " numberOfCoinsAtHome " + numberOfCoinsAtHome);
+        System.out.println("Color " + home.getColor() + " NumberOnDice " + numberOnDice + " numberOfCoinsAtHome " + numberOfCoinsAtHome);
     }
 
     public boolean hasWon() {

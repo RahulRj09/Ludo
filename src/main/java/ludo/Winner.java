@@ -1,15 +1,17 @@
 package ludo;
 
+import model.Home;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Winner {
-    private List<Color> colors = new ArrayList<>();
+    private List<Home> colors = new ArrayList<>();
     private int red = 0;
     private int green = 0;
 
-    void add(Color color) {
-        colors.add(color);
+    void add(Home home) {
+        colors.add(home);
     }
 
     public boolean checkWinner() {
@@ -21,11 +23,11 @@ public class Winner {
     }
 
     private void winner() {
-        for (Color color : colors) {
-            if (Color.RED == color) {
+        for (Home home : colors) {
+            if (home.getColor().equals("Red")) {
                 this.red += 1;
             }
-            if (Color.GREEN == color) {
+            if (home.getColor().equals("Green")) {
                 this.green += 1;
             }
         }
