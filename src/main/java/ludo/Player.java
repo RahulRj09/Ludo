@@ -10,17 +10,17 @@ public class Player {
     private Dice dice;
     private Winner winner;
     private int numberOfCoinsOut = -1;
+    private Scanner scanner = new Scanner(System.in);
 
     public Player(Color color) {
         this.color = color;
-        this.coins = Arrays.asList(new Coin(),new Coin(),new Coin(),new Coin());
+        this.coins = Arrays.asList(new Coin(), new Coin(), new Coin(), new Coin());
         this.dice = new Dice();
         this.winner = new Winner();
     }
 
     public void moveACoin(int numberOnDice) {
         System.out.println("Which coin do you want to move?");
-        Scanner scanner = new Scanner(System.in);
         int coinToMove = scanner.nextInt();
         int position = coins.get(coinToMove).moveBy(numberOnDice);
         System.out.println(position);
