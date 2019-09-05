@@ -12,6 +12,11 @@ public class Game {
     }
 
     public boolean isRunning() {
+        for (Player player : players) {
+            if (player.hasWon()) {
+                return false;
+            }
+        }
         return true;
     }
 

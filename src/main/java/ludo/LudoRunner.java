@@ -10,5 +10,9 @@ public class LudoRunner {
         while (game.isRunning()) {
             game.play();
         }
+        if(!game.isRunning()){
+            System.out.println("win");
+        }
+
     }
 }

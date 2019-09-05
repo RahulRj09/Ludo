@@ -8,6 +8,7 @@ public class Player {
     List<Coin> coins = new ArrayList<>();
     Color color;
     Dice dice;
+    Winner winner;
     private int numberOfCoinsOut = -1;
 
     public Player(Color color) {
@@ -16,7 +17,8 @@ public class Player {
             Coin coin = new Coin();
             this.coins.add(coin);
         }
-        dice = new Dice();
+        this.dice = new Dice();
+        this.winner = new Winner();
     }
 
     public void moveACoin(int numberOnDice) {
@@ -26,8 +28,7 @@ public class Player {
         int position = coins.get(coinToMove).moveBy(numberOnDice);
         System.out.println(position);
         if (position > color.getEndingPosition()) {
-            System.out.println(coins.get(coinToMove));
-            System.out.println("winner");
+            winner.add(color);
         }
     }
 
@@ -69,4 +70,7 @@ public class Player {
         }
     }
 
+    public boolean hasWon() {
+        return winner.checkWinner();
+    }
 }
