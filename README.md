@@ -1,3 +1,4 @@
+
 Implementation of [Ludo](https://en.wikipedia.org/wiki/Ludo_(board_game) game.
 
 The output is a console-based Java program.
