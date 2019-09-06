@@ -1,17 +1,17 @@
 package model;
 
-import ludo.Coin;
+import ludo.Token;
 
 import java.util.List;
 
 public class Home {
-    List<Coin> coins;
+    List<Token> tokens;
     int startingPosition;
     int endingPosition;
     String color;
 
-    public List<Coin> getCoins() {
-        return coins;
+    public List<Token> getTokens() {
+        return tokens;
     }
 
     public int getStartingPosition() {

@@ -7,21 +7,21 @@ import java.util.Scanner;
 
 public class Player {
     Home home;
-    private List<Coin> coins;
+    private List<Token> tokens;
     private Dice dice;
     private int numberOfCoinsOut = -1;
     private Scanner scanner = new Scanner(System.in);
 
     public Player(Home home) {
         this.home = home;
-        this.coins = home.getCoins();
+        this.tokens = home.getTokens();
         this.dice = new Dice();
     }
 
     public void moveACoin(int numberOnDice) {
         System.out.println("Which coin do you want to move?");
         int coinToMove = scanner.nextInt();
-        int position = coins.get(coinToMove).moveBy(numberOnDice);
+        int position = tokens.get(coinToMove).moveBy(numberOnDice);
         System.out.println(position);
         if (position >= home.getEndingPosition()) {
             Game.add(home);
@@ -30,7 +30,7 @@ public class Player {
 
     public void moveACoinOut() {
         numberOfCoinsOut++;
-        coins.get(numberOfCoinsOut).place(home.getStartingPosition());
+        tokens.get(numberOfCoinsOut).place(home.getStartingPosition());
     }
 
     public void play() {
@@ -63,8 +63,8 @@ public class Player {
 
     private int getNumberOfCoinsAtHome() {
         int numberOfCoinsAtHome = 0;
-        for (Coin coin : coins) {
-            if (coin.isAtHome()) {
+        for (Token token : tokens) {
+            if (token.isAtHome()) {
                 numberOfCoinsAtHome++;
             }
         }

@@ -1,6 +1,6 @@
 package model;
 
-import ludo.Coin;
+import ludo.Token;
 
 import java.util.Arrays;
 
@@ -9,6 +9,6 @@ public class Blue extends Home {
         this.color = "Blue";
         this.startingPosition = 39;
         this.endingPosition= 96;
-        this.coins = Arrays.asList(new Coin(),new Coin(),new Coin(),new Coin());
+        this.tokens = Arrays.asList(new Token(),new Token(),new Token(),new Token());
     }
 }

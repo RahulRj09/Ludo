@@ -1,6 +1,6 @@
 package ludo;
 
-public class Coin {
+public class Token {
     int position = -1;
 
     public boolean isAtHome() {
