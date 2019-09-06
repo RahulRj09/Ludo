@@ -13,7 +13,6 @@ public class Game {
     private int green = 0;
     private int blue = 0;
     private int yellow = 0;
-    private int neededCoinForWinner = 1;
 
     public Game(List<Player> players) {
         this.players = players;
@@ -36,6 +35,7 @@ public class Game {
 
     public boolean checkWinner() {
         String winner = hasWon();
+        int neededCoinForWinner = 1;
         boolean red = this.red == neededCoinForWinner;
         boolean green = this.green == neededCoinForWinner;
         boolean blue = this.blue == neededCoinForWinner;
