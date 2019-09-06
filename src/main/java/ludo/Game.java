@@ -54,17 +54,19 @@ public class Game {
 
     private void hasWon() {
         for (Home home : colors) {
-            if (home.getColor().equals("Red")) {
-                this.red += 1;
-            }
-            if (home.getColor().equals("Green")) {
-                this.green += 1;
-            }
-            if (home.getColor().equals("Blue")) {
-                this.red += 1;
-            }
-            if (home.getColor().equals("Yellow")) {
-                this.green += 1;
+            switch (home.getColor()) {
+                case "Red":
+                    this.red += 1;
+                    break;
+                case "Green":
+                    this.green += 1;
+                    break;
+                case "Blue":
+                    this.blue += 1;
+                    break;
+                case "Yellow":
+                    this.yellow += 1;
+                    break;
             }
         }
     }
