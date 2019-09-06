@@ -1,4 +1,4 @@
 # Ludo
-Ludo (from Latin ludo, "I play") is a board game for two to four players, in which the players race their four tokens from start to finish according to die rolls. Like other cross and circle games, ludo is derived from the Indian game pachisi, but simpler. The game and its variants are popular in many countries and under various names.
+>>Ludo (from Latin ludo, "I play") is a board game for two to four players, in which the players race their four tokens from start to finish according to die rolls. Like other cross and circle games, ludo is derived from the Indian game pachisi, but simpler. The game and its variants are popular in many countries and under various names.
 
---- [Ludo (board game). (Since c. 1896). In Wikipedia, The Free Encyclopedia.](https://en.wikipedia.org/wiki/Ludo_(board_game))
+---- [Ludo board game. (Since c. 1896). In Wikipedia, The Free Encyclopedia.](https://en.wikipedia.org/wiki/Ludo_(board_game))
