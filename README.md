@@ -1,4 +1,4 @@
-## Implementation of [Ludo-Game](https://en.wikipedia.org/wiki/Ludo_(board_game).
+Implementation of [Ludo-Game](https://en.wikipedia.org/wiki/Ludo_(board_game).
 
 The output is a console-based Java program.
 
