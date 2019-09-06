@@ -11,7 +11,9 @@ public class Game {
     static private List<Home> colors = new ArrayList<>();
     private int red = 0;
     private int green = 0;
-
+    private int blue = 0;
+    private int yellow = 0;
+    private int neededCoinForWinner = 4;
 
     public Game(List<Player> players) {
         this.players = players;
@@ -40,7 +42,11 @@ public class Game {
 
     public boolean checkWinner() {
         hasWon();
-        if (this.red == 1 || this.green == 1) {
+        boolean red = this.red == neededCoinForWinner;
+        boolean green = this.green == neededCoinForWinner;
+        boolean blue = this.blue == neededCoinForWinner;
+        boolean yellow = this.yellow == neededCoinForWinner;
+        if (red || green || blue || yellow) {
             return true;
         }
         return false;
@@ -52,6 +58,12 @@ public class Game {
                 this.red += 1;
             }
             if (home.getColor().equals("Green")) {
+                this.green += 1;
+            }
+            if (home.getColor().equals("Blue")) {
+                this.red += 1;
+            }
+            if (home.getColor().equals("Yellow")) {
                 this.green += 1;
             }
         }
