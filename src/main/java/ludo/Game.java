@@ -31,10 +31,7 @@ public class Game {
     }
 
     public boolean isRunning() {
-            if (checkWinner()) {
-                return false;
-            }
-        return true;
+        return !checkWinner();
     }
 
     public boolean checkWinner() {

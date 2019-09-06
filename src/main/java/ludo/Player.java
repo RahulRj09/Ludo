@@ -72,6 +72,8 @@ public class Player {
     }
 
     private void print(int numberOnDice, int numberOfCoinsAtHome) {
-        System.out.println("Color " + home.getColor() + " NumberOnDice " + numberOnDice + " numberOfCoinsAtHome " + numberOfCoinsAtHome);
+        System.out.println("Color " + home.getColor() +
+                    " NumberOnDice " + numberOnDice +
+                    " numberOfCoinsAtHome " + numberOfCoinsAtHome);
     }
 }
