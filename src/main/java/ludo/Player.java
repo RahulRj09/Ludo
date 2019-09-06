@@ -1,20 +1,20 @@
 package ludo;
 
-import model.Home;
+import model.Yard;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Player {
-    Home home;
+    Yard yard;
     private List<Token> tokens;
     private Dice dice;
     private int numberOfCoinsOut = -1;
     private Scanner scanner = new Scanner(System.in);
 
-    public Player(Home home) {
-        this.home = home;
-        this.tokens = home.getTokens();
+    public Player(Yard yard) {
+        this.yard = yard;
+        this.tokens = yard.getTokens();
         this.dice = new Dice();
     }
 
@@ -23,14 +23,14 @@ public class Player {
         int coinToMove = scanner.nextInt();
         int position = tokens.get(coinToMove).moveBy(numberOnDice);
         System.out.println(position);
-        if (position >= home.getEndingPosition()) {
-            Game.add(home);
+        if (position >= yard.getEndingPosition()) {
+            Game.add(yard);
         }
     }
 
     public void moveACoinOut() {
         numberOfCoinsOut++;
-        tokens.get(numberOfCoinsOut).place(home.getStartingPosition());
+        tokens.get(numberOfCoinsOut).place(yard.getStartingPosition());
     }
 
     public void play() {
@@ -72,7 +72,7 @@ public class Player {
     }
 
     private void print(int numberOnDice, int numberOfCoinsAtHome) {
-        System.out.println("Color " + home.getColor() +
+        System.out.println("Color " + yard.getColor() +
                 " NumberOnDice " + numberOnDice +
                 " numberOfCoinsAtHome " + numberOfCoinsAtHome);
     }

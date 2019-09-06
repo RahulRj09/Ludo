@@ -1,6 +1,6 @@
 package ludo;
 
-import model.Home;
+import model.Yard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 public class Game {
     private List<Player> players;
     private int currentPlayerIndex;
-    static private List<Home> colors = new ArrayList<>();
+    static private List<Yard> colors = new ArrayList<>();
     private int red = 0;
     private int green = 0;
     private int blue = 0;
@@ -25,8 +25,8 @@ public class Game {
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
     }
 
-    static void add(Home home) {
-        colors.add(home);
+    static void add(Yard yard) {
+        colors.add(yard);
     }
 
     public boolean isRunning() {
@@ -48,8 +48,8 @@ public class Game {
     }
 
     private String tokenCounter() {
-        for (Home home : colors) {
-            switch (home.getColor()) {
+        for (Yard yard : colors) {
+            switch (yard.getColor()) {
                 case "Red":
                     this.red += 1;
                     break;
@@ -63,7 +63,7 @@ public class Game {
                     this.yellow += 1;
                     break;
             }
-            return home.getColor();
+            return yard.getColor();
         }
         return null;
     }

@@ -4,7 +4,7 @@ import ludo.Token;
 
 import java.util.Arrays;
 
-public class Red extends Home {
+public class Red extends Yard {
     public Red() {
         this.color = "Red";
         this.startingPosition = 0;

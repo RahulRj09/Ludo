@@ -4,7 +4,7 @@ import ludo.Token;
 
 import java.util.List;
 
-public class Home {
+public class Yard {
     List<Token> tokens;
     int startingPosition;
     int endingPosition;
