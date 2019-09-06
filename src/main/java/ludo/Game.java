@@ -34,7 +34,7 @@ public class Game {
     }
 
     public boolean checkWinner() {
-        String winner = hasWon();
+        String winner = tokenCounter();
         int neededCoinForWinner = 1;
         boolean red = this.red == neededCoinForWinner;
         boolean green = this.green == neededCoinForWinner;
@@ -47,7 +47,7 @@ public class Game {
         return false;
     }
 
-    private String hasWon() {
+    private String tokenCounter() {
         for (Home home : colors) {
             switch (home.getColor()) {
                 case "Red":
