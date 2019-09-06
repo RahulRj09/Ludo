@@ -1,8 +1,3 @@
-
-Implementation of [Ludo](https://en.wikipedia.org/wiki/Ludo_(board_game) game.
-
-The output is a console-based Java program.
-
 ## Ludo-Game
 Ludo is a board game for two to four players, in which the players race their four tokens from start to finish according to dice rolls
 
@@ -17,3 +12,5 @@ If a piece lands on a piece of a different color, the piece jumped upon is retur
 When a piece has circumnavigated the board, it proceeds up the home column. A piece can only be moved onto the home area by an exact throw.
 
 The first person to move all 4 pieces into the home area wins.
+
+--- [Ludo board game. (Since c. 1896). In Wikipedia, The Free Encyclopedia.](https://en.wikipedia.org/wiki/Ludo_(board_game))
