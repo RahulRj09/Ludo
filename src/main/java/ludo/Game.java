@@ -18,6 +18,16 @@ public class Game {
         this.currentPlayerIndex = 0;
     }
 
+    public void play() {
+        Player currentPlayer = players.get(currentPlayerIndex);
+        currentPlayer.play();
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+    }
+
+    static void add(Home home) {
+        colors.add(home);
+    }
+
     public boolean isRunning() {
         for (Player player : players) {
             if (checkWinner()) {
@@ -28,24 +38,15 @@ public class Game {
         return true;
     }
 
-    public void play() {
-        Player currentPlayer = players.get(currentPlayerIndex);
-        currentPlayer.play();
-        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
-    }
-
-    static void add(Home home) {
-        colors.add(home);
-    }
     public boolean checkWinner() {
-        winner();
+        hasWon();
         if (this.red == 1 || this.green == 1) {
             return true;
         }
         return false;
     }
 
-    private void winner() {
+    private void hasWon() {
         for (Home home : colors) {
             if (home.getColor().equals("Red")) {
                 this.red += 1;

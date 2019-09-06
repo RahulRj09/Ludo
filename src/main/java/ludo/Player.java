@@ -9,7 +9,6 @@ public class Player {
     Home home;
     private List<Coin> coins;
     private Dice dice;
-    private Winner winner;
     private int numberOfCoinsOut = -1;
     private Scanner scanner = new Scanner(System.in);
 
@@ -17,7 +16,6 @@ public class Player {
         this.home = home;
         this.coins = home.getCoins();
         this.dice = new Dice();
-        this.winner = new Winner();
     }
 
     public void moveACoin(int numberOnDice) {
@@ -26,7 +24,7 @@ public class Player {
         int position = coins.get(coinToMove).moveBy(numberOnDice);
         System.out.println(position);
         if (position >= home.getEndingPosition()) {
-           Game.add(home);
+            Game.add(home);
         }
     }
 
