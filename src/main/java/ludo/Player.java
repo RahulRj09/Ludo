@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Player {
     Home home;
-    List<Coin> coins;
+    private List<Coin> coins;
     private Dice dice;
     private Winner winner;
     private int numberOfCoinsOut = -1;
@@ -26,7 +26,7 @@ public class Player {
         int position = coins.get(coinToMove).moveBy(numberOnDice);
         System.out.println(position);
         if (position >= home.getEndingPosition()) {
-            winner.add(home);
+           Game.add(home);
         }
     }
 
@@ -75,9 +75,5 @@ public class Player {
 
     private void print(int numberOnDice, int numberOfCoinsAtHome) {
         System.out.println("Color " + home.getColor() + " NumberOnDice " + numberOnDice + " numberOfCoinsAtHome " + numberOfCoinsAtHome);
-    }
-
-    public boolean hasWon() {
-        return winner.checkWinner();
     }
 }
