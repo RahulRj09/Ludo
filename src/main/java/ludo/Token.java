@@ -15,4 +15,8 @@ public class Token {
         this.position += numberOnDice;
         return this.position;
     }
+
+    public int getPosition() {
+        return position;
+    }
 }

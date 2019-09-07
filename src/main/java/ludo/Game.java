@@ -35,11 +35,11 @@ public class Game {
 
     public boolean checkWinner() {
         String winner = tokenCounter();
-        int neededCoinForWinner = 1;
-        boolean red = this.red == neededCoinForWinner;
-        boolean green = this.green == neededCoinForWinner;
-        boolean blue = this.blue == neededCoinForWinner;
-        boolean yellow = this.yellow == neededCoinForWinner;
+        int neededTokenForWinner = 1;
+        boolean red = this.red == neededTokenForWinner;
+        boolean green = this.green == neededTokenForWinner;
+        boolean blue = this.blue == neededTokenForWinner;
+        boolean yellow = this.yellow == neededTokenForWinner;
         if (red || green || blue || yellow) {
             System.out.println(winner);
             return true;
@@ -62,6 +62,8 @@ public class Game {
                 case "Yellow":
                     this.yellow += 1;
                     break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + yard.getColor());
             }
             return yard.getColor();
         }

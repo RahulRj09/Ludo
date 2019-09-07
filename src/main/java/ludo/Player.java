@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Player {
-    Yard yard;
+    private Yard yard;
     private List<Token> tokens;
     private Dice dice;
     private int numberOfCoinsOut = -1;
@@ -18,13 +18,16 @@ public class Player {
         this.dice = new Dice();
     }
 
-    public void moveACoin(int numberOnDice) {
-        System.out.println("Which coin do you want to move?");
-        int coinToMove = scanner.nextInt();
-        int position = tokens.get(coinToMove).moveBy(numberOnDice);
-        System.out.println(position);
-        if (position >= yard.getEndingPosition()) {
-            Game.add(yard);
+    public void moveACoin(int coinToMove, int numberOnDice) {
+        int i = numberOnDice + tokens.get(coinToMove).getPosition();
+        if (i > yard.getEndingPosition()) {
+            System.out.println("not move");
+        } else {
+            int position = tokens.get(coinToMove).moveBy(numberOnDice);
+            System.out.println(position);
+            if (position == yard.getEndingPosition()) {
+                Game.add(yard);
+            }
         }
     }
 
@@ -42,22 +45,24 @@ public class Player {
         }
 
         if (numberOnDice == 6 && numberOfCoinsAtHome == 0) {
-            moveACoin(numberOnDice);
+            int coinToMove = takeInput();
+            moveACoin(coinToMove, numberOnDice);
         }
 
         if (numberOnDice == 6 && numberOfCoinsAtHome != 4) {
             System.out.println("What do you want to do?");
             System.out.println("1. Move existing coin");
             System.out.println("2. Take out a coin");
-            Scanner scanner = new Scanner(System.in);
             int userChoice = scanner.nextInt();
             if (userChoice == 1) {
-                moveACoin(numberOnDice);
+                int coinToMove = takeInput();
+                moveACoin(coinToMove, numberOnDice);
             } else {
                 moveACoinOut();
             }
         } else if (numberOfCoinsAtHome != 4) {
-            moveACoin(numberOnDice);
+            int coinToMove = takeInput();
+            moveACoin(coinToMove, numberOnDice);
         }
     }
 
@@ -75,5 +80,10 @@ public class Player {
         System.out.println("Color " + yard.getColor() +
                 " NumberOnDice " + numberOnDice +
                 " numberOfCoinsAtHome " + numberOfCoinsAtHome);
+    }
+
+    private int takeInput() {
+        System.out.println("Which coin do you want to move?");
+        return scanner.nextInt();
     }
 }
