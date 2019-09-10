@@ -15,4 +15,15 @@ public class Board {
         this.dice = dice;
     }
 
+    public List<Yard> getYards() {
+        return yards;
+    }
+
+    public List<Cell> getCells() {
+        return cells;
+    }
+
+    public Dice getDice() {
+        return dice;
+    }
 }
