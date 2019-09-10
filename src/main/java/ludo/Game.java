@@ -8,7 +8,7 @@ import java.util.List;
 public class Game {
     private List<Player> players;
     private int currentPlayerIndex;
-    static private List<Yard> colors = new ArrayList<>();
+    static private List<Yard> yards = new ArrayList<>();
     private int red = 0;
     private int green = 0;
     private int blue = 0;
@@ -26,7 +26,7 @@ public class Game {
     }
 
     static void add(Yard yard) {
-        colors.add(yard);
+        yards.add(yard);
     }
 
     public boolean isRunning() {
@@ -48,7 +48,7 @@ public class Game {
     }
 
     private String tokenCounter() {
-        for (Yard yard : colors) {
+        for (Yard yard : yards) {
             switch (yard.getColor()) {
                 case "Red":
                     this.red += 1;

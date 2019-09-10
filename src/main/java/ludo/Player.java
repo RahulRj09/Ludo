@@ -11,6 +11,7 @@ public class Player {
     private Dice dice;
     private int numberOfCoinsOut = -1;
     private Scanner scanner = new Scanner(System.in);
+    final int TOTAL_TOKENS = 4;
 
     public Player(Yard yard) {
         this.yard = yard;
@@ -49,7 +50,7 @@ public class Player {
         int numberOnDice = dice.toss();
         int numberOfCoinsAtHome = getNumberOfCoinsAtHome();
         print(numberOnDice, numberOfCoinsAtHome);
-        if (numberOnDice == 6 && numberOfCoinsAtHome == 4) {
+        if (numberOnDice == 6 && numberOfCoinsAtHome == TOTAL_TOKENS) {
             moveACoinOut();
         }
 
@@ -58,7 +59,7 @@ public class Player {
             moveACoin(coinToMove, numberOnDice);
         }
 
-        if (numberOnDice == 6 && numberOfCoinsAtHome != 4) {
+        if (numberOnDice == 6 && numberOfCoinsAtHome != TOTAL_TOKENS) {
             System.out.println("What do you want to do?");
             System.out.println("1. Move existing coin");
             System.out.println("2. Take out a coin");
@@ -69,7 +70,7 @@ public class Player {
             } else {
                 moveACoinOut();
             }
-        } else if (numberOfCoinsAtHome != 4) {
+        } else if (numberOfCoinsAtHome != TOTAL_TOKENS) {
             int coinToMove = takeInput();
             moveACoin(coinToMove, numberOnDice);
         }
