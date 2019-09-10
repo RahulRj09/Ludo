@@ -34,7 +34,7 @@ public class Player {
             if (position == yard.getEndingPosition()) {
                 Game.add(yard);
             }
-            if(numberOnDice==6){
+            if (numberOnDice == 6) {
                 play();
             }
         }
