@@ -25,7 +25,7 @@ public class Player {
             if (getNumberOfCoinsAtHome() < 3) {
                 System.out.println("move other's coin");
                 int userInput = takeInput();
-                moveACoin(userInput,numberOnDice);
+                moveACoin(userInput, numberOnDice);
             }
         }
         if (i <= yard.getEndingPosition()) {
@@ -33,6 +33,9 @@ public class Player {
             System.out.println(position);
             if (position == yard.getEndingPosition()) {
                 Game.add(yard);
+            }
+            if(numberOnDice==6){
+                play();
             }
         }
     }
