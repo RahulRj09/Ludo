@@ -6,9 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Player {
-    private Yard yard;
+     Yard yard;
     private List<Token> tokens;
-    private Dice dice;
     private int numberOfCoinsOut = -1;
     private Scanner scanner = new Scanner(System.in);
     final int TOTAL_TOKENS = 4;
@@ -16,10 +15,9 @@ public class Player {
     public Player(Yard yard) {
         this.yard = yard;
         this.tokens = yard.getTokens();
-        this.dice = new Dice();
     }
 
-    public void moveACoin(int coinToMove, int numberOnDice) {
+    public Token moveACoin(int coinToMove, int numberOnDice) {
         int i = numberOnDice + tokens.get(coinToMove).getPosition();
         if (i > yard.getEndingPosition()) {
             System.out.println("not valid move");
@@ -35,28 +33,27 @@ public class Player {
             if (position == yard.getEndingPosition()) {
                 Game.add(yard);
             }
-            if (numberOnDice == 6) {
-                play();
-            }
         }
+        return tokens.get(coinToMove);
     }
 
-    public void moveACoinOut() {
+    public Token moveACoinOut() {
         numberOfCoinsOut++;
         tokens.get(numberOfCoinsOut).place(yard.getStartingPosition());
+        return tokens.get(numberOfCoinsOut);
     }
 
-    public void play() {
+    public Token play(Dice dice) {
         int numberOnDice = dice.toss();
         int numberOfCoinsAtHome = getNumberOfCoinsAtHome();
         print(numberOnDice, numberOfCoinsAtHome);
         if (numberOnDice == 6 && numberOfCoinsAtHome == TOTAL_TOKENS) {
-            moveACoinOut();
+            return moveACoinOut();
         }
 
         if (numberOnDice == 6 && numberOfCoinsAtHome == 0) {
             int coinToMove = takeInput();
-            moveACoin(coinToMove, numberOnDice);
+            return moveACoin(coinToMove, numberOnDice);
         }
 
         if (numberOnDice == 6 && numberOfCoinsAtHome != TOTAL_TOKENS) {
@@ -66,14 +63,15 @@ public class Player {
             int userChoice = scanner.nextInt();
             if (userChoice == 1) {
                 int coinToMove = takeInput();
-                moveACoin(coinToMove, numberOnDice);
+                return moveACoin(coinToMove, numberOnDice);
             } else {
-                moveACoinOut();
+                return moveACoinOut();
             }
         } else if (numberOfCoinsAtHome != TOTAL_TOKENS) {
             int coinToMove = takeInput();
-            moveACoin(coinToMove, numberOnDice);
+            return moveACoin(coinToMove, numberOnDice);
         }
+        return null;
     }
 
     private int getNumberOfCoinsAtHome() {

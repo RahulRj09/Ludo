@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    private Board board;
     private List<Player> players;
     private int currentPlayerIndex;
     static private List<Yard> yards = new ArrayList<>();
@@ -14,14 +15,18 @@ public class Game {
     private int blue = 0;
     private int yellow = 0;
 
-    public Game(List<Player> players) {
+    public Game(Board board, List<Player> players) {
+        this.board = board;
         this.players = players;
         this.currentPlayerIndex = 0;
     }
 
     public void play() {
         Player currentPlayer = players.get(currentPlayerIndex);
-        currentPlayer.play();
+        Token token = currentPlayer.play(board.getDice());
+        if(token != null && token.position > currentPlayer.yard.getStartingPosition()){
+            System.out.println(token.getPosition());
+        }
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
     }
 

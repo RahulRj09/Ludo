@@ -17,16 +17,16 @@ public class LudoRunner {
         yards.add(greenYard);
 
         List<Cell> cells = new ArrayList<>();
-        for (int i = 0; i < 72 ; i++) {
+        for (int i = 0; i < 72; i++) {
             Cell cell = new Cell(i);
             cells.add(cell);
         }
 
         Dice dice = new Dice();
 
-        Board board = new Board(yards,cells,dice);
+        Board board = new Board(yards, cells, dice);
         List<Player> players = Arrays.asList(new Player(redYard), new Player(greenYard));
-        Game game = new Game(players);
+        Game game = new Game(board, players);
         while (game.isRunning()) {
             game.play();
             if (!game.isRunning()) {
