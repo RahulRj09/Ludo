@@ -25,7 +25,8 @@ public class Game {
         Player currentPlayer = players.get(currentPlayerIndex);
         Token token = currentPlayer.play(board.getDice());
         if (token != null && token.position > currentPlayer.yard.getStartingPosition()) {
-            board.getCells().get(token.position - currentPlayer.yard.getStartingPosition()).setTokens(token);
+            int currentCellId = token.position - currentPlayer.yard.getStartingPosition();
+            board.getCells().get(currentCellId).setTokens(token);
         }
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
     }

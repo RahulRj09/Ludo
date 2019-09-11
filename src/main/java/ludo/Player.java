@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Player {
-     Yard yard;
+    Yard yard;
     private List<Token> tokens;
     private int numberOfCoinsOut = -1;
     private Scanner scanner = new Scanner(System.in);
@@ -34,7 +34,15 @@ public class Player {
                 Game.add(yard);
             }
         }
+        printAllTokenPosition(tokens);
         return tokens.get(coinToMove);
+    }
+
+    private void printAllTokenPosition(List<Token> tokens) {
+        for (int i = 0; i < tokens.size(); i++) {
+            System.out.println("Token index " + i + " Token Position " + tokens.get(i).getPosition());
+
+        }
     }
 
     public Token moveACoinOut() {

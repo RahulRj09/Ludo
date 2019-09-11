@@ -25,7 +25,9 @@ public class LudoRunner {
         Dice dice = new Dice();
 
         Board board = new Board(yards, cells, dice);
+
         List<Player> players = Arrays.asList(new Player(redYard), new Player(greenYard));
+
         Game game = new Game(board, players);
         while (game.isRunning()) {
             game.play();
