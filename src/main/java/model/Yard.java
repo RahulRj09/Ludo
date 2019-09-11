@@ -26,4 +26,14 @@ public class Yard {
         return color;
     }
 
+    public int getNumberOfCoinsAtHome() {
+        int numberOfCoinsAtHome = 0;
+        for (Token token : tokens) {
+            if (token.isAtHome()) {
+                numberOfCoinsAtHome++;
+            }
+        }
+        return numberOfCoinsAtHome;
+    }
+
 }

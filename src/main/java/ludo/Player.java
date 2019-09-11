@@ -12,6 +12,7 @@ public class Player {
     private Scanner scanner = new Scanner(System.in);
     final int TOTAL_TOKENS = 4;
     private int numberOnDice;
+
     public Player(Yard yard) {
         this.yard = yard;
         this.tokens = yard.getTokens();
@@ -21,7 +22,7 @@ public class Player {
         int i = numberOnDice + tokens.get(coinToMove).getPosition();
         if (i > yard.getEndingPosition()) {
             System.out.println("not valid move");
-            if (getNumberOfCoinsAtHome() < 3) {
+            if (yard.getNumberOfCoinsAtHome() < 3) {
                 System.out.println("move other's coin");
                 int userInput = takeInput();
                 moveACoin(userInput, numberOnDice);
@@ -52,8 +53,8 @@ public class Player {
     }
 
     public Token play(Dice dice) {
-       numberOnDice = dice.roll();
-        int numberOfCoinsAtHome = getNumberOfCoinsAtHome();
+        numberOnDice = dice.roll();
+        int numberOfCoinsAtHome = yard.getNumberOfCoinsAtHome();
         print(numberOnDice, numberOfCoinsAtHome);
         if (numberOnDice == 6 && numberOfCoinsAtHome == TOTAL_TOKENS) {
             return moveACoinOut();
@@ -82,15 +83,6 @@ public class Player {
         return null;
     }
 
-    private int getNumberOfCoinsAtHome() {
-        int numberOfCoinsAtHome = 0;
-        for (Token token : tokens) {
-            if (token.isAtHome()) {
-                numberOfCoinsAtHome++;
-            }
-        }
-        return numberOfCoinsAtHome;
-    }
 
     private void print(int numberOnDice, int numberOfCoinsAtHome) {
         System.out.println("Color " + yard.getColor() +
