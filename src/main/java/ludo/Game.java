@@ -9,11 +9,10 @@ public class Game {
     private Board board;
     private List<Player> players;
     private int currentPlayerIndex;
-    static private List<Yard> yards = new ArrayList<>();
-    private int red = 0;
-    private int green = 0;
-    private int blue = 0;
-    private int yellow = 0;
+    private static List<String> redYard = new ArrayList<>();
+    private static List<String> greenYard = new ArrayList<>();
+    private static List<String> blueYard = new ArrayList<>();
+    private static List<String> yellowYard = new ArrayList<>();
 
     public Game(Board board, List<Player> players) {
         this.board = board;
@@ -40,7 +39,18 @@ public class Game {
     }
 
     static void add(Yard yard) {
-        yards.add(yard);
+        if (yard.getColor().equals("Red")) {
+            redYard.add(yard.getColor());
+        }
+        if (yard.getColor().equals("Green")) {
+            greenYard.add(yard.getColor());
+        }
+        if (yard.getColor().equals("Blue")) {
+            blueYard.add(yard.getColor());
+        }
+        if (yard.getColor().equals("Yellow")) {
+            yellowYard.add(yard.getColor());
+        }
     }
 
     public boolean isRunning() {
@@ -48,30 +58,16 @@ public class Game {
     }
 
     public boolean checkWinner() {
-        tokenCounter();
-        int neededTokenForWinner = 1;
-        boolean red = this.red == neededTokenForWinner;
-        boolean green = this.green == neededTokenForWinner;
-        boolean blue = this.blue == neededTokenForWinner;
-        boolean yellow = this.yellow == neededTokenForWinner;
-        if (red || green || blue || yellow) {
+        int neededTokenForWinner = 2;
+        boolean red = redYard.size() == neededTokenForWinner;
+        boolean green = greenYard.size() == neededTokenForWinner;
+        boolean yellow = yellowYard.size() == neededTokenForWinner;
+        boolean blue = blueYard.size() == neededTokenForWinner;
+        if (red || green || yellow || blue) {
             System.out.println("win");
             return true;
         }
         return false;
     }
 
-    private void tokenCounter() {
-        for (Yard yard : yards) {
-            if ("Red".equals(yard.getColor())) {
-                this.red += 1;
-            } else if ("Green".equals(yard.getColor())) {
-                this.green += 1;
-            } else if ("Blue".equals(yard.getColor())) {
-                this.blue += 1;
-            } else if ("Yellow".equals(yard.getColor())) {
-                this.yellow += 1;
-            }
-        }
-    }
 }

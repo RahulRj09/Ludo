@@ -2,8 +2,8 @@ package ludo;
 
 
 public class Cell {
-    int id;
-    Token token;
+    private int id;
+    private Token token;
 
     public Cell(int id) {
         this.id = id;

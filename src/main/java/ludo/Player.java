@@ -22,7 +22,7 @@ public class Player {
         int i = numberOnDice + tokens.get(coinToMove).getPosition();
         if (i > yard.getEndingPosition()) {
             System.out.println("not valid move");
-            if (yard.getNumberOfCoinsAtHome() < 3) {
+            if (numberOfCoinsOut >= 1) {
                 System.out.println("move other's coin");
                 int userInput = takeInput();
                 moveACoin(userInput, numberOnDice);
