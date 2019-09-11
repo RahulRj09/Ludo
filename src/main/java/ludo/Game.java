@@ -9,6 +9,7 @@ public class Game {
     private Board board;
     private List<Player> players;
     private int currentPlayerIndex;
+    private int previousIndex;
     private static List<String> redYard = new ArrayList<>();
     private static List<String> greenYard = new ArrayList<>();
     private static List<String> blueYard = new ArrayList<>();
@@ -30,6 +31,7 @@ public class Game {
                 setPositionOnCell(currentPlayer, token1);
             }
         }
+        this.previousIndex = currentPlayerIndex;
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
     }
 
@@ -58,16 +60,15 @@ public class Game {
     }
 
     public boolean checkWinner() {
-        int neededTokenForWinner = 2;
+        int neededTokenForWinner = 1;
         boolean red = redYard.size() == neededTokenForWinner;
         boolean green = greenYard.size() == neededTokenForWinner;
         boolean yellow = yellowYard.size() == neededTokenForWinner;
         boolean blue = blueYard.size() == neededTokenForWinner;
         if (red || green || yellow || blue) {
-            System.out.println("win");
+            System.out.println(players.get(this.previousIndex).yard.getColor());
             return true;
         }
         return false;
     }
-
 }
