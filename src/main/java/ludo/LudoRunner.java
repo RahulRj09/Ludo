@@ -1,8 +1,6 @@
 package ludo;
 
-import model.GreenYard;
-import model.RedYard;
-import model.Yard;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -25,10 +25,18 @@ public class Game {
         Player currentPlayer = players.get(currentPlayerIndex);
         Token token = currentPlayer.play(board.getDice());
         if (token != null && token.position > currentPlayer.yard.getStartingPosition()) {
-            int currentCellId = token.position - currentPlayer.yard.getStartingPosition();
-            board.getCells().get(currentCellId).setTokens(token);
+            setPositionOnCell(currentPlayer, token);
+            if (currentPlayer.getNumberOnDice() == 6) {
+                Token token1 = currentPlayer.play(board.getDice());
+                setPositionOnCell(currentPlayer, token1);
+            }
         }
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+    }
+
+    private void setPositionOnCell(Player currentPlayer, Token token) {
+        int currentCellId = token.position - currentPlayer.yard.getStartingPosition();
+        board.getCells().get(currentCellId).setTokens(token);
     }
 
     static void add(Yard yard) {
@@ -40,39 +48,30 @@ public class Game {
     }
 
     public boolean checkWinner() {
-        String winner = tokenCounter();
+        tokenCounter();
         int neededTokenForWinner = 1;
         boolean red = this.red == neededTokenForWinner;
         boolean green = this.green == neededTokenForWinner;
         boolean blue = this.blue == neededTokenForWinner;
         boolean yellow = this.yellow == neededTokenForWinner;
         if (red || green || blue || yellow) {
-            System.out.println(winner);
+            System.out.println("win");
             return true;
         }
         return false;
     }
 
-    private String tokenCounter() {
+    private void tokenCounter() {
         for (Yard yard : yards) {
-            switch (yard.getColor()) {
-                case "Red":
-                    this.red += 1;
-                    break;
-                case "Green":
-                    this.green += 1;
-                    break;
-                case "Blue":
-                    this.blue += 1;
-                    break;
-                case "Yellow":
-                    this.yellow += 1;
-                    break;
-                default:
-                    throw new IllegalStateException("Unexpected value: " + yard.getColor());
+            if ("Red".equals(yard.getColor())) {
+                this.red += 1;
+            } else if ("Green".equals(yard.getColor())) {
+                this.green += 1;
+            } else if ("Blue".equals(yard.getColor())) {
+                this.blue += 1;
+            } else if ("Yellow".equals(yard.getColor())) {
+                this.yellow += 1;
             }
-            return yard.getColor();
         }
-        return null;
     }
 }
