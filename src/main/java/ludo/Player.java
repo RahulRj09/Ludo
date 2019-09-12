@@ -10,7 +10,8 @@ public class Player {
     private List<Token> tokens;
     private int numberOfCoinsOut = -1;
     private Scanner scanner = new Scanner(System.in);
-    final int TOTAL_TOKENS = 4;
+    private final int TOTAL_TOKENS = 4;
+    private final int LARGEST_NUMBER_ON_DICE = 6;
     private int numberOnDice;
 
     public Player(Yard yard) {
@@ -56,16 +57,16 @@ public class Player {
         numberOnDice = dice.roll();
         int numberOfCoinsAtHome = yard.getNumberOfCoinsAtHome();
         print(numberOnDice, numberOfCoinsAtHome);
-        if (numberOnDice == 6 && numberOfCoinsAtHome == TOTAL_TOKENS) {
+        if (numberOnDice == LARGEST_NUMBER_ON_DICE && numberOfCoinsAtHome == TOTAL_TOKENS) {
             return moveACoinOut();
         }
 
-        if (numberOnDice == 6 && numberOfCoinsAtHome == 0) {
+        if (numberOnDice == LARGEST_NUMBER_ON_DICE && numberOfCoinsAtHome == 0) {
             int coinToMove = takeInput();
             return moveACoin(coinToMove, numberOnDice);
         }
 
-        if (numberOnDice == 6 && numberOfCoinsAtHome != TOTAL_TOKENS) {
+        if (numberOnDice == LARGEST_NUMBER_ON_DICE && numberOfCoinsAtHome != TOTAL_TOKENS) {
             System.out.println("What do you want to do?");
             System.out.println("1. Move existing coin");
             System.out.println("2. Take out a coin");
